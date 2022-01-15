@@ -5,6 +5,8 @@ const getAllCommits = async (req, res, next) => {
     const octokit = new Octokit({
       auth: process.env.GIT_HUB_KEY,
     });
+
+    // https://docs.github.com/en/rest/reference/commits
     const commits = await octokit.request(
       "GET /repos/juanse1801/commit-app/commits"
     );
