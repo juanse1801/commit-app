@@ -1,6 +1,14 @@
+import { Octokit } from "@octokit/core";
+
 const getAllCommits = async (req, res, next) => {
   try {
-    res.status(200).send("commits");
+    const octokit = new Octokit({
+      auth: process.env.GIT_HUB_KEY,
+    });
+    const commits = await octokit.request(
+      "GET /repos/juanse1801/commit-app/commits"
+    );
+    res.status(200).send(commits.data);
   } catch (error) {
     res.status(500).send({ message: "Internal server error" });
   }
