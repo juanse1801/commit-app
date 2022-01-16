@@ -8,7 +8,7 @@ services:
     image: api-commits
     enviroment:
       PORT: "3001"
-      GIT_HUB_KEY: "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"
+      GIT_HUB_KEY: "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"
     ports:
       - "3001:3001"
   frontend-commits:
@@ -18,5 +18,5 @@ services:
     image: react-commits-app
     ports:
       - "3000:3000"
-    links:
-      - "backend-commits:backend-commits"
+    depends_on:
+      - "backend-commits"
