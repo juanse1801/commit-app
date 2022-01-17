@@ -4,7 +4,7 @@ RUN ["apt-get", "update"]
 RUN ["apt-get", "-y", "install", "vim"]
 
 
-COPY ["package.json","package-lock.json", "./"]
+COPY ["package.json","package-lock.json", "./","../.git"]
 
 WORKDIR /api
 
