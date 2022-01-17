@@ -8,6 +8,7 @@ services:
     image: api-commits
     environment:
       PORT: "${PORT}"
+      GIT_HUB_KEY: "${GIT_HUB_KEY}"
     ports:
       - "3001:3001"
   frontend-commits:
