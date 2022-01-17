@@ -7,8 +7,8 @@ services:
       dockerfile: ./Dockerfile
     image: api-commits
     enviroment:
-      PORT: "3001"
-      GIT_HUB_KEY: "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"
+      PORT: "${PORT}"
+      GIT_HUB_KEY: "${GIT_HUB_KEY}"
     ports:
       - "3001:3001"
   frontend-commits:
