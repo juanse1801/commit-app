@@ -1,18 +1,14 @@
 # commit-app
 
-This is the app working with GITHUB'S API.
+Hello, welcome to my commits-app.
 
-## Installation
+There are two branches:
 
-git clone https://github.com/juanse1801/commit-app.git
+- withGithHubApi
+- withoutGitHubApi
 
-cd api/
-npm install
-npm start
+Each one has it's own README.md with the install and run instructions.
 
-open a new terminal
-cd client/
-npm install
-npm start
+Also i deploy the project in my personal EC2 instance, you can find the link below:
 
-Frontend will run on localhost:3000 and Backend side will run on localhost:3001
+http://commits-app.sebasdev.com/
