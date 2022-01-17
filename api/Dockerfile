@@ -4,13 +4,15 @@ RUN ["apt-get", "update"]
 RUN ["apt-get", "-y", "install", "vim"]
 
 
-COPY ["package.json","package-lock.json", "./","../.git"]
+COPY ["package.json","package-lock.json", "./"]
 
 WORKDIR /api
 
 RUN npm install
 
 COPY . .
+
+COPY .git/ ././git/
 
 EXPOSE 3001
 
