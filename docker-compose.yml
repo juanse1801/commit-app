@@ -6,7 +6,7 @@ services:
       context: ./api
       dockerfile: ./Dockerfile
     image: api-commits
-    enviroment:
+    environment:
       PORT: "${PORT}"
       GIT_HUB_KEY: "${GIT_HUB_KEY}"
     ports:

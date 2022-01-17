@@ -10,9 +10,7 @@ const Commits = () => {
   useEffect(() => {
     if (!commits) {
       const callCommits = async () => {
-        const response = await fetch(
-          "http://backend-commits:3001/api/commits/all"
-        );
+        const response = await fetch("http://localhost:3001/api/commits/all");
         if (response.ok) {
           const allCommits = await response.json();
           setCommits(allCommits);
