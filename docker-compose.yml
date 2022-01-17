@@ -3,8 +3,8 @@ version: "3"
 services:
   backend-commits:
     build:
-      context: ./api
-      dockerfile: ./Dockerfile
+      context: ./
+      dockerfile: ./api/Dockerfile
     image: api-commits
     environment:
       PORT: "${PORT}"

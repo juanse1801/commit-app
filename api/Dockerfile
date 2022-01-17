@@ -3,17 +3,15 @@ FROM node:14
 RUN ["apt-get", "update"]
 RUN ["apt-get", "-y", "install", "vim"]
 
+RUN mkdir -p /usr/src/api
+WORKDIR /usr/src/api
 
-COPY ["package.json","package-lock.json", "./"]
-
-WORKDIR /api
-
+COPY ./api/package.json /usr/src/api/
 RUN npm install
 
-COPY . .
-
-COPY .git/ ././git/
+COPY .git/ /usr/src/api
+COPY ./api/ /usr/src/api
 
 EXPOSE 3001
 
-CMD ["node", "index.js"]
+CMD [ "npm", "start" ]
