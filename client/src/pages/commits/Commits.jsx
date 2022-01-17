@@ -7,6 +7,42 @@ const Commits = () => {
   const [commits, setCommits] = useState(null);
   const [selectedCommit, setSelectedCommit] = useState(null);
 
+  const commitsToJSON = (data) => {
+    let count = 1;
+    let commitObject = {
+      user: "",
+      sha: "",
+      date: "",
+      description: "",
+    };
+    const commitsObjects = [];
+    for (let i = 0; i < data.length; i++) {
+      let validationObject = {
+        1: "sha",
+        2: "user",
+        3: "date",
+        4: "description",
+      };
+
+      if (count >= 5) {
+        commitsObjects.push(commitObject);
+        count = 1;
+        commitObject = {
+          user: "",
+          sha: "",
+          date: "",
+          description: "",
+        };
+        commitObject[validationObject[count]] = commits[i].trim();
+        count++;
+      } else {
+        commitObject[validationObject[count]] = commits[i].trim();
+        count++;
+      }
+    }
+    return commitsObjects;
+  };
+
   useEffect(() => {
     if (!commits) {
       const callCommits = async () => {
@@ -29,7 +65,8 @@ const Commits = () => {
       <div className="container">
         <div className="section-left">
           <CommitContainer
-            commits={commits}
+            commitsObjects
+            commits={commits ? commitsToJSON(commits) : []}
             setSelectedCommit={setSelectedCommit}
             selectedCommit={selectedCommit}
           />

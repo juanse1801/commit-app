@@ -1,16 +1,22 @@
-import { Octokit } from "@octokit/core";
+import { exec } from "child_process";
 
 const getAllCommits = async (req, res, next) => {
   try {
-    const octokit = new Octokit({
-      auth: process.env.GIT_HUB_KEY,
-    });
+    exec(
+      'git log --all --pretty="format:%H%n%C(white) %an %nDate:   %ad%n%n%w(0,4,4)%B%n"',
+      (err, stdout) => {
+        if (err) {
+          res.status(500).send({ message: "Internal server error" });
+        }
+        const commits = stdout
+          .split("\\n \\n")[0]
+          .trim()
+          .split("\n")
+          .filter((el) => el.trim().length > 1);
 
-    // https://docs.github.com/en/rest/reference/commits
-    const commits = await octokit.request(
-      "GET /repos/juanse1801/commit-app/commits"
+        res.status(200).send(commits);
+      }
     );
-    res.status(200).send(commits.data);
   } catch (error) {
     res.status(500).send({ message: "Internal server error" });
   }

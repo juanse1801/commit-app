@@ -58,7 +58,7 @@ const CommitContainer = ({ commits, setSelectedCommit, selectedCommit }) => {
                         fontWeight: "lighter",
                       }}
                     >
-                      {commit?.author.login}
+                      {commit?.user}
                     </p>
                   </div>
                 </td>
@@ -84,9 +84,9 @@ const CommitContainer = ({ commits, setSelectedCommit, selectedCommit }) => {
                         fontWeight: "lighter",
                       }}
                     >
-                      {commit?.commit.message.length > 10
-                        ? `${commit?.commit.message.substring(0, 10)}...`
-                        : commit?.commit.message}
+                      {commit?.description.length > 10
+                        ? `${commit?.description.substring(0, 10)}...`
+                        : commit?.description}
                     </p>
                   </div>
                 </td>
@@ -99,7 +99,7 @@ const CommitContainer = ({ commits, setSelectedCommit, selectedCommit }) => {
                         fontWeight: "lighter",
                       }}
                     >
-                      {converTmz(commit?.commit.committer.date)}
+                      {converTmz(commit?.date)}
                     </p>
                   </div>
                 </td>

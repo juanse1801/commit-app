@@ -21,7 +21,7 @@ const CommitInfo = ({ selectedCommit }) => {
       {selectedCommit ? (
         <>
           <div className="commit-name">
-            <p>{selectedCommit?.author.login}</p>
+            <p>{selectedCommit?.user}</p>
           </div>
           <div className="commit-info">
             <div className="info-hrz">
@@ -30,11 +30,11 @@ const CommitInfo = ({ selectedCommit }) => {
             </div>
             <div className="info-vrt">
               <h4>Description:</h4>
-              <p>{selectedCommit?.commit.message}</p>
+              <p>{selectedCommit?.description}</p>
             </div>
             <div className="info-hrz">
               <h4>Date:</h4>
-              <p>{converTmz(selectedCommit?.commit?.committer?.date)}</p>
+              <p>{converTmz(selectedCommit?.date)}</p>
             </div>
           </div>
         </>
