@@ -6,7 +6,7 @@ const getAllCommits = async (req, res, next) => {
       'git log --all --pretty="format:%H%n%C(white) %an %nDate:   %ad%n%n%w(0,4,4)%B%n"',
       (err, stdout) => {
         if (err) {
-          res.status(500).send({ message: "Internal server error" });
+          console.log(err);
         }
         const commits = stdout
           .split("\\n \\n")[0]
